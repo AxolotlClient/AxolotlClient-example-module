@@ -1,32 +1,31 @@
 {
   "schemaVersion": 1,
-  "id": "modid",
+  "id": "axolotlclient-example-module",
   "version": "${version}",
-  "name": "Example Mod",
-  "description": "This is an example description! Tell everyone what your mod is about!",
+  "name": "AxolotlClient Example Module",
+  "description": "This is an example description! Tell everyone what your module is about!",
   "authors": [
-    "Me!"
+    "moehreag",
+    "another_person"
+  ],
+  "contributors": [
+    "some_contributor"
   ],
   "contact": {
-    "homepage": "https://legacyfabric.net/",
-    "sources": "https://github.com/Legacy-Fabric/fabric-example-mod"
+    "homepage": "https://axolotlclient.github.io/",
+    "sources": "https://github.com/AxolotlClient/AxolotlClient-example-module"
   },
   "license": "CC0-1.0",
   "icon": "assets/modid/icon.png",
   "environment": "*",
   "entrypoints": {
-    "main": [
-      "net.fabricmc.example.ExampleMod"
+    "axolotlclient.module": [
+      "io.github.axolotlclient.example.ExampleModule"
     ]
   },
-  "mixins": [
-    "modid.mixins.json"
-  ],
   "depends": {
     "fabricloader": ">=0.12.0",
-    "minecraft": "1.8.9"
-  },
-  "suggests": {
-    "another-mod": "*"
+    "minecraft": ">=1.8.9",
+    "axolotlclient": ">=2.2.0"
   }
 }

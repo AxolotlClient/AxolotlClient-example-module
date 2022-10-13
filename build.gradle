@@ -1,5 +1,5 @@
 plugins {
-	id 'fabric-loom' version "1.0-SNAPSHOT" // To use chocoloom, change the version to a commit hash
+	id 'fabric-loom' version "1.0-SNAPSHOT"
 	id 'maven-publish'
 }
 
@@ -11,6 +11,7 @@ version = project.mod_version
 group = project.maven_group
 
 repositories {
+	mavenLocal()
 	maven {
 		name = "legacy-fabric"
 		url = "https://maven.legacyfabric.net"
@@ -20,20 +21,18 @@ repositories {
 		name = 'Babric'
 		url = 'https://maven.glass-launcher.net/babric'
 	}
+
+	maven {
+		url 'https://repo.hypixel.net/repository/Hypixel/'
+	}
+
+	maven { url 'https://jitpack.io' }
+	mavenCentral()
 }
 
 loom {
 	setIntermediaryUrl('https://maven.legacyfabric.net/net/legacyfabric/intermediary/%1$s/intermediary-%1$s-v2.jar');
-	
-	// Only needed for versions not available from vanilla launcher by default.
-	// customMinecraftManifest.set("https://meta.legacyfabric.net/v2/manifest/${minecraft_version}")
 
-	// Required by 1.7.x
-	// runs {
-	// 	client {
-	// 		programArgs "--userProperties", "{}"
-	// 	}
-	// }
 }
 
 def lwjgl2 = !project.minecraft_version.startsWith("1.13")
@@ -49,6 +48,8 @@ dependencies {
 	modImplementation ("net.legacyfabric.legacy-fabric-api:legacy-fabric-api:${fabric_version}") {
  		exclude module: "legacy-fabric-entity-events-v1"
  	}
+
+	modApi("io.github.axolotlclient:Axolotlclient-branding-1.8:2.2.0+1.8.9")
 
 	if (lwjgl2) {
 		if (currentOs.contains("mac")) {
